@@ -1,0 +1,38 @@
+ /* LED CONTROLLED WITH 2 PUSH BUTTON PROJECT
+ cosinusteta.asia
+ 
+ CIRCUIT :-
+ i) LEDPIN CONNECTED PIN 13.
+ ii) PUSHBUTTON1 CONNECTED TO PIN 8.
+ iii) PUSHBUTTON2 CONNECTED TO PIN 9.
+ iv) BOTH THE PUSH BUTTONS CONNECTED PARALLELY, EACH WITH A 1K PULLUP RESISTOR AND BOTH THE PUSH BUTTONS CONNECTED TO 5V SUPPLY.
+   */
+ 
+ int ledpin = 13;
+ int pushbutton1 = 8;
+ int pushbutton2 = 9;
+ boolean lastbuttonstate1 = LOW;
+ boolean lastbuttonstate2 = LOW;
+
+ void setup()
+ {
+   pinMode(ledpin,OUTPUT);
+   pinMode(pushbutton1,INPUT);
+   pinMode(pushbutton2,INPUT);
+ }
+ 
+ 
+void loop()
+{
+  if ( digitalRead(pushbutton1)== HIGH && digitalRead(pushbutton2) == LOW && lastbuttonstate1 == LOW )
+   { digitalWrite (ledpin,HIGH) ;}
+   
+ else if ( digitalRead(pushbutton1) == LOW && digitalRead(pushbutton2)== LOW && lastbuttonstate1 == HIGH)
+    { digitalWrite (ledpin,HIGH) ; }
+   
+   if ( digitalRead(pushbutton1)== LOW && digitalRead(pushbutton2) == HIGH  && lastbuttonstate2 == LOW)
+   { digitalWrite (ledpin,LOW) ;}
+   
+  else  if ( digitalRead(pushbutton1) == LOW && digitalRead(pushbutton2)== LOW  && lastbuttonstate2 == HIGH)
+    { digitalWrite (ledpin,LOW) ; }
+   }
